@@ -2,13 +2,13 @@
 game.PlayerEntity = me.Entity.extend({
     init: function(x , y, settings){
         this._super(me.Entity, 'init', [x, y, {
-        image = "mario",
-        spritewidth = "128",
-        spriteheight = "128",
-        width = 128,
-        height = 128,
+        image: "mario",
+        spritewidth: "128",
+        spriteheight: "128",
+        width: 128,
+        height: 128,
         getShape: function(){
-            return (new me.Rect(0, 0, 128, 128)).toPolygon();
+            return (new me.Rect(0, 0, 30, 128)).toPolygon();
         }
     }]);
  
@@ -45,7 +45,7 @@ game.PlayerEntity = me.Entity.extend({
       
         this._super(me.Entity, "update", [delta]);
         return true;
-    }
+    },
     
     collideHandler: function(response){
         
@@ -59,12 +59,14 @@ game.PlayerEntity = me.Entity.extend({
         this._super(me.Entity, 'init', [x, y, settings]);
         this.body.onCollision = this.onCollision.bind(this);
         this.level = settings.level;
+        this.xSpawn = settings.xSpawn;
+        this.ySpawn = settings.ySpawn;
     },
     
     OnCollision: function(){
         this.body.setCollisionMask(me.collision.types.NO_OBJECT);
         me.levelDirector.loadLevel(this.level);
-        me.state.current().resetPlayer();
+        me.state.current().resetPlayer(this.xSpawn, this.ySpawn);
     }
     
 });
