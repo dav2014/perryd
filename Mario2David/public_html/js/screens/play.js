@@ -10,7 +10,7 @@ game.PlayScreen = me.ScreenObject.extend({
 
 		this.resetPlayer(0, 400);
                 
-                me.input.bindKey(me.input.Key.RIGHT, 'right');
+                me.input.bindKey(me.input.Key.RIGHT, "right");
                 me.input.bindKey(me.input.Key.LEFT, 'left');
                 me.input.bindKey(me.input.KEY.UP, 'jump');
             // add our HUD to the game world
