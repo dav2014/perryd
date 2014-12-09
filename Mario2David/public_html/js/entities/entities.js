@@ -7,6 +7,7 @@ game.PlayerEntity = me.Entity.extend({
         spriteheight: "128",
         width: 128,
         height: 128,
+    
         getShape: function(){
             return (new me.Rect(0, 0, 30, 128)).toPolygon();
         }
@@ -26,24 +27,24 @@ game.PlayerEntity = me.Entity.extend({
         if(me.input.isKeyPressed("right")){
             this.body.vel.x += this.body.accel.x * me.timer.trick;
             this.flipX(false);
-        }else if (me.input.isKeyPressed('left')){
+            }else if (me.input.isKeyPressed('left')){
             this.flipX(true);
             this.body.vel.x -= this.body.accel.x * me.timer.trick;
             
             
-        }else {
+            }else {
             this.body.vel.x = 0;
-        }
+            }
         
-        this.body.update(delta);
-         me.collision.check(this, true, this.collideHander.bind(this), true);
+            this.body.update(delta);
+            me.collision.check(this, true, this.collideHandler.bind(this), true);
          
-         if(me.input.isKeyPressed('jump')) {
-             if (!this.body.jumping && !this.body.falling)   {
-                 this.body.vel.y = -this.body.maxVel.y * me.timerr.trick;
-                 this.body.jumping = true;
-             }
-         }
+            if(me.input.isKeyPressed('jump')) {
+            if (!this.body.jumping && !this.body.falling)   {
+            this.body.vel.y = -this.body.maxVel.y * me.timerr.trick;
+            this.body.jumping = true;
+            }
+            }
          
          
         if(this.body.vel.x !== 0){

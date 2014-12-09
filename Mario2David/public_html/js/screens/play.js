@@ -1,4 +1,4 @@
-game.PlayScreen = me.ScreenObject.extend({
+        game.PlayScreen = me.ScreenObject.extend({
 	/**
 	 *  action to perform on state change
 	 */
@@ -7,11 +7,16 @@ game.PlayScreen = me.ScreenObject.extend({
 		game.data.score = 0;
 
                 me.levelDirector.loadLevel("Davidlv1");
+                
+                var player = me.pool.pull("mario", 0, 420, {});
+                me.game.world.addChild(player, 3);
+                
+                me.input.bindKey(me.input.KEY.RIGHT, "right");
 
 		this.resetPlayer(0, 400);
-                
-                me.input.bindKey(me.input.Key.RIGHT, "right");
-                me.input.bindKey(me.input.Key.LEFT, 'left');
+//                these are to make the character move
+                me.input.bindKey(me.input.KEY.RIGHT, "right");
+                me.input.bindKey(me.input.KEY.LEFT, 'left');
                 me.input.bindKey(me.input.KEY.UP, 'jump');
             // add our HUD to the game world
 		this.HUD = new game.HUD.Container();
