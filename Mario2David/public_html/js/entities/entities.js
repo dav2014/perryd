@@ -25,11 +25,11 @@ game.PlayerEntity = me.Entity.extend({
       
     update: function(delta){
         if(me.input.isKeyPressed("right")){
-            this.body.vel.x += this.body.accel.x * me.timer.trick;
+            this.body.vel.x += this.body.accel.x * me.timer.tick;
             this.flipX(false);
             }else if (me.input.isKeyPressed('left')){
             this.flipX(true);
-            this.body.vel.x -= this.body.accel.x * me.timer.trick;
+            this.body.vel.x -= this.body.accel.x * me.timer.tick;
             
             
             }else {
@@ -41,7 +41,7 @@ game.PlayerEntity = me.Entity.extend({
          
             if(me.input.isKeyPressed('jump')) {
             if (!this.body.jumping && !this.body.falling)   {
-            this.body.vel.y = -this.body.maxVel.y * me.timerr.trick;
+            this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
             this.body.jumping = true;
             }
             }
@@ -50,7 +50,7 @@ game.PlayerEntity = me.Entity.extend({
         if(this.body.vel.x !== 0){
             if(!this.renderable.isCurrentAnimation("smallWalk")){
             this.renderable.setCurrentAnimation("smallWalk");
-            this.renderable.setAnimation();
+            this.renderable.setAnimationFrame();
               }
         }else{
              this.renderable.setCurrentAnimation("idle");
